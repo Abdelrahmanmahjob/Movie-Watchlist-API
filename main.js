@@ -22,12 +22,12 @@ async function movieSearch() {
     if(userInput) {
         movieHtml = []
 
-        const res = await fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=3800ab28&s=${userInput}&type=movie`)
+        const res = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=3800ab28&s=${userInput}&type=movie`)
         const moviesData = await res.json()
         // console.log(moviesData)
         if(moviesData.Response === "True") {
             const arr = moviesData.Search.map(async movie => {
-                const res = await fetch(`http://www.omdbapi.com/?i=tt3896198&apikey=3800ab28&t=${movie.Title}&type=movie`)
+                const res = await fetch(`https://www.omdbapi.com/?i=tt3896198&apikey=3800ab28&t=${movie.Title}&type=movie`)
                 return res.json()
             })
             Promise.all(arr)
