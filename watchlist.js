@@ -1,14 +1,15 @@
 const moviesContainer = document.querySelector('.movies-container')
 // console.log(localStorage.getItem(`${localStorage.key(0)}`))
+
 let movieHtml = ""
 for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i)
     if (key.startsWith('movie-')) {
         movieHtml += localStorage.getItem(key)
+        moviesContainer.innerHTML = ""
+        moviesContainer.insertAdjacentHTML("afterbegin", movieHtml)
     }
 }
-moviesContainer.innerHTML = ""
-moviesContainer.insertAdjacentHTML("afterbegin", movieHtml)
 
 const addToWatchlist = document.querySelectorAll(".add-to-watchlist")
 // console.log(addToWatchlist)
